@@ -1,0 +1,48 @@
+import psycopg2
+import os
+import sys
+f=open('fname.txt','r')
+var1=f.read() //dates
+conn=None
+list=[] //list of names
+try:
+	conn=psycopg2.connect(database=sys.argv[1],user = os.environ.get('PGUSER'),
+	password = os.environ.get('PGPASSWORD'), host = os.environ.get('PGHOST'),
+	port = os.environ.get('PGPORT'))
+	
+	cur=conn.cursor()
+	cur.execute("select...%s", (var1,))	
+	rows=cur.fetchall()
+
+except(Exception, psycopg2.DatabaseError) as error:
+	print(error)
+
+finally:
+	if conn is not None:
+	conn.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

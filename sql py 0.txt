@@ -1,0 +1,49 @@
+//import necessary headers
+import psycopg2
+import os
+import sys
+
+//open file
+f=open('filename.txt','r')
+
+//var for values extracted from file
+val=f.read()
+
+//create conn var
+conn=None
+
+//list to save values
+list=[]
+
+//try
+try:
+	//conn connect
+	conn=psycopg2.connect(...)
+	
+	//create cursor
+	cur=conn.cursor()
+
+	//execute cursor
+	cur.execute("*sql query*",(val))
+
+	//fetch rows
+	rows=cur.fetchall()
+
+	//for statements
+	for n in rows:
+		for k in n:
+			list.append(k)
+	for x in list:
+		*python code*
+	print(ans)
+
+	//close cursor
+	cur.close()
+
+//except
+except(Exception, psycopg2.DatabaseError) as error:
+	print(error)
+
+//finally close conn
+if conn is not None:
+	conn.close()

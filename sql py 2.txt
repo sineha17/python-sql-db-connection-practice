@@ -1,0 +1,31 @@
+
+import psycopg2
+import os
+import sys
+import math
+f=open('f.txt','r')
+val=f.read()
+conn=None
+list=[]
+try:
+	conn=psycopg2.connect(database=sys.argv[1],user = os.environ.get('PGUSER'),
+	password = os.environ.get('PGPASSWORD'), host = os.environ.get('PGHOST'),
+	port = os.environ.get('PGPORT'))
+
+	cur=conn.cursor()
+	cur.execute(select...(val))
+	rows=cur.fetchall()
+	for n in rows;
+		for k in n:
+			list.append(k)
+	for var in list:
+	...
+	print(ans)
+	cur.close()
+
+except(Exception, psycopg2.DatabaseError) as error:
+	print(error)
+
+finally:
+	if conn is not None:
+	conn.close()
